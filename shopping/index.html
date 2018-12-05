@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible"/>
+  <meta name="description" content="Shopping cart details"/>
+  <meta name="keywords" content="shopping cart, online shopping"/>  
+  <meta name="robots"/>
+  <title>Shopping Cart</title>
+  <link rel="stylesheet" type="text/css" href="css/style.css" media="all" />
+  <link href="css/jquery.bxslider.css" rel="stylesheet" />
+</head>
+<body>
+<div id="overlay" style="display:none"></div>
+<div id="wrapper">
+	<div class="heading">YOUR SHOPPING BAG</div>
+	<article>
+		<section id="leftSection" class="fl">
+			<section id="section_1"></section>
+			<div class="row"></div>
+			
+			<section class="section" id="section_2">
+				<div class="fl helpBlock">
+					<div><strong>Need help <br />or have questions ?</strong></div>
+					<div>call customer service at<br /> 1-800-555-5555</div>
+					<div><a href="#">chat with one of <br />our stylists</a></div>
+					<div><a href="#">see return <br />& exchange policy</a></div>
+				</div>
+				<div class="fr paymentBlockRight">
+					<div class="promotionCode">
+						<span class="fl">ENTER PROMOTION CODE &nbsp;<br />OR GIFT CARD</span>
+						<span class="fr"><input type="text" name="promotion_code" id="promotion_code" />&nbsp;<button value="APPLY">APPLY</button</span>				
+						<div class="clear"></div>
+					</div>				
+					<div id="total_block">
+						<div id="sub_total_block">
+							<div>
+								<span class="fl">SUBTOTAL</span>
+								<span><sup>$</sup><span id="subTotal">50.00</span></span>
+							</div>
+							<div>
+								<span class="fl">PROMOTIONCODE JF10 APPLIED</span>
+								<span>- <sup>$</sup>5.00</span>
+							</div>
+							<div class="estimatedShip">
+								<span class="fl">ESTIMATED SHIPPING<sup>*</sup></span>
+								<span>FREE</span>
+							</div>
+						</div>
+						<div class="estimatedTotal">
+							<strong>
+								<span class="fl">ESTIMATED TOTAL</span>
+								<span><sup>$</sup><span id="estimatedTotal">45.00</span></span>
+							</strong>
+						</div>					
+						<div class="checkOutBtn">
+							<span class="continueBtn"><a href="javascript:void(0);">CONTINUE SHOPPING</a></span>
+							<span><img src="images/checkout_btn.png" alt="checkout" /></span>
+						</div>
+						<div>secure checkout. Shopping is always safe and secure</div>					
+					</div>			
+					<div class="clear"></div>	
+				</div>		
+			</section>			
+			<section id="section_3" class="section"></section>			
+		</section>
+		
+		<div class="slider1" id="slider_html">
+			
+		</div>
+
+	</article>
+</div>
+
+<div id="popup_box"></div>
+
+<script id="slider_template" type="text/x-handlebars-template">
+{{#item}}
+	<section id="rightSection">		
+		<div class="slide">
+			<div id="item_wrapper_right" class="rightColumn">TAKE A LOOK AT<br /><i>the</i><br />NEWEST ARRIVALS
+				<figure>
+					<img src="images/{{image}}"/>
+					<figcaption>
+						<br />
+						<strong>{{title}}</strong>
+						<div class="sup"><sup>$</sup>{{price}}</div>
+						<br />
+						<div id="{{@index}}" class="viewDetail"><a href="javascript:void(0);" >VIEW DETAILS</a></div>
+					</figcaption>					
+				</figure>		
+			</div>
+		</div>		
+		<div class="clear"></div>		
+	</section>
+	{{/item}}
+</script>
+
+<script id="popup_template" type="text/x-handlebars-template">
+	<section class="popupBlock" id="popup_block">
+		<div class="popupLeft">			
+			<figcaption>
+				<strong>{{title}}</strong>
+				<div class="sup amount"><sup>$</sup>{{price}}</div>
+				<div class="m40">
+					<div class="fl sizeQtyL">Size:
+					<select id="size" name="size">
+						<option {{selected size "M"}}>M</option>
+						<option {{selected size "L"}}>L</option>
+						<option {{selected size "S"}}>S</option>
+					</select></div>
+					<div class="fr sizeQtyR">Qty:
+						<input type="text" value="{{qty}}" />					
+					</div>
+					<div><a href="javascript:void(0);"><img  src="images/edit_btn.png" /></a></div>
+				</div>
+			</figcaption>
+		</div>
+		<div class="popupRight">
+			<figure>
+				<img src="images/{{image}}">
+			</figure>
+		</div>
+		<div class="clear"></div>
+		
+	</section>
+	<a id="popupBoxClose">Close</a>	
+</script>
+<script id="section_1_template" type="text/x-handlebars-template">
+	<table id="item_table">
+		<thead>
+			<tr><th>{{item.length}} ITEMS</th><th width="10%">SIZE</th><th width="10%">QTY</th><th width="10%">PRICE</th></tr>
+		</thead>
+			<tbody>
+				{{#item}}
+				<tr>
+					<td>							
+						<figure style="overflow:hidden;margin-right:0;">
+							<img class="fl" style="margin-right:20px;" width="160px;" height="160px;" src="images/{{image}}" />
+							<figcaption>
+								<strong>{{title}}</strong>
+								<div>Style#:{{style}}</div>
+								<div>Color:{{color}}</div>
+							</figcaption>
+							<div class="button-div">
+								<a href="javascript:void(0);" class="editItem" id="{{@index}}">EDIT</a> |
+								<a href="javascript:void(0);" class="removeItem" id="{{id}}">X REMOVE</a> |
+								<a href="javascript:void(0);" class="saveForLater" id="{{@index}}">SAVE FOR LATER</a>
+							</div>
+						</figure>								
+					</td>
+					<td class="columns" align="center" valign="top">{{size}}</td>
+					<td class="columns" align="center" valign="top"><input class="textBox" id="txtBox{{@index}}" type="text" value="{{qty}}" /></td>
+					<td class="columns" align="center" valign="top"><sup>$</sup>{{price}}</td>
+				</tr>
+				{{/item}}
+			</tbody>				
+	</table>
+</script>
+
+<script id="section_3_template" type="text/x-handlebars-template">
+	<div class="saveLater">
+		<div id="save_for_later" class="fl">SAVED FOR LATER</div>
+		<div class="fr">{{saveLaterObj.length}} item</div>
+	</div>
+	<div id="saved_later_container">
+		<table id="save_later_table">
+			<thead>
+				<tr><th>ITEMS</th><th width="10%">SIZE</th><th width="10%">QTY</th><th width="10%">PRICE</th></tr>
+			</thead>
+			<tbody>
+			{{#saveLaterObj}}
+				<tr>
+					<td>							
+						<figure style="overflow:hidden;margin-right:0;">
+							<img src="images/{{image}}" style="margin-right:20px;" class="fl">
+							<figcaption>
+								<strong>{{title}}</strong>
+								<div>Style#:{{style}}</div>
+								<div>Color:{{color}}</div>
+							</figcaption>
+							<div class="button-div">
+								<a href="javascript:void(0);" class="sEditItem" id="{{@index}}">EDIT</a> |
+								<a href="javascript:void(0);" class="sRemove" id="{{id}}">X REMOVE</a> |
+								<a href="javascript:void(0);" class="addToBag" id="{{@index}}">ADD TO BAG</a>
+							</div>
+						</figure>
+						
+					</td>
+					<td valign="top" align="center" class="columns">{{size}}</td><td valign="top" align="center" class="columns"><input id="sTxtBox{{@index}}" type="text" class="sTextBox" value="{{qty}}"></td><td valign="top" align="center" class="columns"><sup>$</sup>{{price}}</td>
+				</tr>
+			{{/saveLaterObj}}	
+			</tbody>				
+		</table>
+	</div>
+	<div class="thinRow"></div>
+	<div class="signInText"><a href="javascript:void(0);">SIGN IN</a> to save your cart and have access to your items on mobile, tablet and desktop.</div>
+</script>
+
+<script src="js/libs/jquery.js"></script>
+<script src="js/libs/jquery.bxslider.js"></script>
+<script src="js/libs/handlebars.js"></script>
+<script src="js/main.js"></script>
+
+
+
+<script type="text/javascript">	
+Handlebars.registerHelper('selected', function(val1, val2){
+  return val1 == val2 ? ' selected' : '';
+});
+
+var popup = {};
+popup.open = function(which){
+	$('#popup_box').fadeIn("slow");
+	$("#container").css({ // this is just for style
+		"opacity": "0.3"  
+	});
+	MyApp.loadData(which.id);
+	$("#active_popup_id").val(which.id);
+	$("#overlay").show();
+	
+}
+popup.close = function(){
+	$('#popup_box').fadeOut("slow");
+	$("#container").css({ // this is just for style		
+		"opacity": "1"  
+	});
+	$("#active_popup_id").val('');
+	$("#overlay").hide();
+}
+	
+$(document).ready( function() {
+
+	$('.slider1').bxSlider({
+		slideWidth: 300,
+		minSlides: 1,
+		maxSlides: 1,
+		slideMargin: 10
+	});
+
+	// When site loaded, load the Popupbox First		
+});
+</script>
+<input type="hidden" id="active_popup_id" value="" />
+</body>
+</html>

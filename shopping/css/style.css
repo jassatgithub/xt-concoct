@@ -1,0 +1,139 @@
+article, aside, details, figcaption, figure, footer, header, hgroup, nav, section { display: block; }
+audio, canvas, video { display: inline-block; *display: inline; *zoom: 1; }
+audio:not([controls]) { display: none; }
+[hidden] { display: none; }
+
+
+::-moz-selection { background:#FF0; color:#000; text-shadow: none; }
+::selection { background: #FF0; color:#000; text-shadow: none; }
+
+a { color: #00e;outline:none }
+a:visited { color: #551a8b; }
+a:hover { color: #06e; }
+a:focus { outline: thin dotted; }
+a:hover, a:active { outline: 0; }
+
+
+
+html { font-size: 100%; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+html, button, input, select, textarea { font-family: sans-serif; color: #222; }
+body { font-family: verdana;color:#666; margin: 0; font-size: 1em; line-height: 1.4; }
+
+sub, sup { font-size: 75%; line-height: 0; position: relative; vertical-align: baseline; }
+sup { top: -0.5em; }
+sub { bottom: -0.25em; }
+
+
+/*body{font-family: verdana;color:#666;font-size:12px;}*/
+table{width: 100%; border-spacing: 0; table-layout: fixed; margin-right:30px; /*margin-left:10px;*/}
+article{width:100%;overflow:hidden;}
+tr th {border-bottom:3px solid #ddd;border-top:1px solid #ddd;}
+#item_table th:first-child{text-align:left;padding:15px;}
+#save_later_table th:first-child{padding:15px;}
+td figure{	margin-right:0px;overflow:hidden;position:relative;}
+td input{width:25px;text-align:center;}
+.sizeQtyR input{width:50px;text-align:center;}
+figure div a{text-decoration:none;color:#666;font-size:12px;}
+figcaption div a{text-decoration:none;font-size:12px;color:#666;}
+/*figure img{border:1px solid #ccc;}*/
+h1{margin-bottom:30px;}
+td {border-bottom: 1px solid #ccc;}
+
+#wrapper{margin: 10px 50px;padding-left:10px;padding-right:10px; padding-bottom:10px;border:2px solid #ccc;box-shadow:10px 12px 10px gray;}
+
+#overlay{ 
+	background: none repeat scroll 0 0 rgba(0, 0, 0, 0.7);
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+	z-index:100;
+   }
+
+.demo{border:1px solid red;}
+.fl{float:left;}
+.fr{float:right;}
+.clear{clear:both;}
+.columns{padding-top:15px;}
+.button-div{position: absolute; bottom: 0px; left: 185px;}
+.borderBottom{border-bottom:2px solid #ddd;}
+.row{border:2px solid #ddd;}
+.thinRow{border:1px solid #ddd;}
+.section{margin-top:40px;overflow:hidden;width:100%;}
+.paymentBlockRight{width:70%;}
+.helpBlock{font-size:10px;}
+.helpBlock div,#section_3{padding:10px;}
+.helpBlock a{color:inherit;}
+.promotionCode{border-bottom: 3px solid #ddd;overflow:hidden;padding-top:15px;padding-bottom:15px;}
+.estimatedShip{border-bottom:1px solid #ddd;}
+.estimatedTotal{border-bottom: 3px solid #ddd;overflow:hidden;padding-top:15px;padding-bottom:15px;font-size:15px;font-weight:bold;}
+.checkOutBtn{padding:10px 0px 10px 0px;}
+.saveLater{width:100%;overflow:hidden;padding-bottom:10px;}
+.checkOutBtn a{color:inherit;text-decoration:underline;}
+.continueBtn{padding-right:30px;}
+.signInText{margin:40px 0px 40px 0px;}
+.signInText a {color:#666;}
+.rightColumn{text-align:center;width:auto;overflow:hidden;border:1px solid #ccc;}
+.viewDetail{padding:10px;border:1px solid #ccc;}
+.viewDetail a {text-decoration:none;color:#ddd;font-weight:bold;}
+/*.sup{padding:10px 0px 10px 0px;}*/
+.amount{font-size:30px;}
+.heading{margin-bottom:15px;font-size:30px;margin-top:5px;}
+
+.sizeQtyL{border:1px solid #ccc;padding:5px;margin-right:5px;}
+.sizeQtyR{border:1px solid #ccc;padding:5px;margin-left:5px;}
+.m40{margin-top:40px;}
+.m40 img{padding-top:30px;}
+
+#leftSection{width:70%;}
+#rightSection{width:30%;}
+
+#save_for_later{font-size:20px;}
+#item_heading div{float:left;padding: 10px;}
+#total_block{text-align:right;padding-top:15px;}
+#sub_total_block div{padding-top:10px;padding-bottom:10px;font-weight:bold;}
+
+.popupBlock{margin:50px 80px 10px 50px;}
+.popupLeft{float:left;text-align:center;font-size:15px;padding-top:10px;width:220px;}
+.popupRight{float:right;}
+
+
+/* popup_box DIV-Styles*/
+#popup_box { 
+	display:none; /* Hide the DIV */
+	position:fixed;  
+	_position:absolute; /* hack for internet explorer 6 */  
+	height:300px;  
+	width:600px;  
+	background:#FFFFFF;  
+	left: 300px;
+	top: 150px;
+	z-index:100; /* Layering ( on-top of others), if you have lots of layers: I just maximized, you can change it yourself */
+	margin-left: 15px;  
+	
+	/* additional features, can be omitted */
+	border:2px solid #ccc;  	
+	padding:15px;  
+	/*font-size:15px;*/  
+	-moz-box-shadow: 0 0 5px #ff0000;
+	-webkit-box-shadow: 0 0 5px #ff0000;
+	box-shadow: 0 0 5px #ff0000;
+	
+}
+
+a{  
+	cursor: pointer;  
+	text-decoration:none;  
+} 
+
+/* This is for the positioning of the Close Link */
+#popupBoxClose {
+	font-size:20px;  
+	line-height:15px;  
+	right:5px;  
+	top:5px;  
+	position:absolute;  
+	color:#6fa5e2;  
+	font-weight:500;  	
+}
